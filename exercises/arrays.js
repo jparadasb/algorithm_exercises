@@ -1,3 +1,4 @@
+const PerformaceLogger = require("../utils/performace.logger");
 // This is a demo task.
 
 // Write a function:
@@ -42,18 +43,57 @@ function solution1(A) {
     return Math.min(...differences);
 }
 
+// Second approach
+
 function solution(A) {
+    const logger = new PerformaceLogger("Second Solution");
     const set = new Set();
-    const size = A.length;
-    for (n of A) {
+
+    A.sort().forEach((n) => {
         if (n > 0) {
             set.add(n)
         }
+    })
+
+    if (set.size < 1) {
+        return 1;
+    }
+    list = Array.from(set);
+    const max = list.pop()
+    const min = list[0]
+
+    for (let i = min; i <= max + 1; i++) {
+        if (!set.has(i)) {
+            logger.stop()
+            return i;
+        }
+    }
+}
+
+// Third approach
+
+function solution3(A) {
+    const logger = new PerformaceLogger("Third Solution");
+
+    const size = A.length;
+    const map = A.reduce((prev, n) => {
+        if (n > 0) {
+            return [...prev, n];
+        }
+
+        return prev;
+    }, [])
+
+    if (map.length < 1) {
+        return 1;
     }
 
+    const max = Math.max(...map)
+    const min = Math.min(...map)
 
-    for (let i = 1; i <= size + 1; i++) {
-        if (!set.has(i)) {
+    for (let i = min; i <= max + 1; i++) {
+        if (!map.includes(i)) {
+            logger.stop();
             return i;
         }
     }
