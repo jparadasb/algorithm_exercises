@@ -1,26 +1,4 @@
 const PerformaceLogger = require("../utils/performace.logger");
-// This is a demo task.
-
-// Write a function:
-
-//     function solution(A);
-
-// that, given an array A of N integers, returns the smallest positive integer(greater than 0) that does not occur in A.
-
-// For example, given A = [1, 3, 6, 4, 1, 2], the function should return 5.
-
-// Given A = [1, 2, 3], the function should return 4.
-
-// Given A = [−1, −3], the function should return 1.
-
-// Write an efficient algorithm for the following assumptions:
-
-// N is an integer within the range[1..100, 000];
-// each element of array A is an integer within the range[−1, 000, 000..1, 000, 000].
-// Copyright 2009–2021 by Codility Limited.All Rights Reserved.Unauthorized copying, publication or disclosure prohibited.
-
-// you can write to stdout for debugging purposes, e.g.
-// console.log('this is a debug message');
 
 // first approach
 function solution1(A) {
@@ -44,9 +22,9 @@ function solution1(A) {
 }
 
 // Second approach
-
-function solution(A) {
-    const logger = new PerformaceLogger("Second Solution");
+// Its difficult to determinate here what is the order of this function because the sort could be a N^2 or logN
+// O(n log n + n)
+function solution2(A) {
     const set = new Set();
 
     A.sort().forEach((n) => {
@@ -73,7 +51,6 @@ function solution(A) {
 // Third approach
 
 function solution3(A) {
-    const logger = new PerformaceLogger("Third Solution");
 
     const size = A.length;
     const map = A.reduce((prev, n) => {
@@ -93,7 +70,39 @@ function solution3(A) {
 
     for (let i = min; i <= max + 1; i++) {
         if (!map.includes(i)) {
-            logger.stop();
+            return i;
+        }
+    }
+}
+
+// Fourth approach
+
+// Here I remove the second iteration to have an O(n + n)
+
+function solution(A) {
+    const set = new Set();
+    let max = -Infinity;
+    let min = Infinity;
+
+    A.forEach((n) => {
+        if (n > 0) {
+            set.add(n)
+            if (n > max) {
+                max = n;
+            }
+
+            if (n < min) {
+                min = n;
+            }
+        }
+    })
+
+    if (set.size < 1) {
+        return 1;
+    }
+
+    for (let i = min; i <= max + 1; i++) {
+        if (!set.has(i)) {
             return i;
         }
     }

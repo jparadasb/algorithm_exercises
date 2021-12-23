@@ -29,16 +29,24 @@ const config = [
             }
         ],
     },
-    // {
-    //     "name": "BinaryGap",
-    //     "func": require("../exercises/binaryGap.js"),
-    //     "cases": [
-    //         {
-    //             "input": 1041,
-    //             "expected": 5
-    //         }
-    //     ]
-    // }
+    {
+        "name": "BinaryGap",
+        "func": require("../exercises/binaryGap.js"),
+        "cases": [
+            {
+                "input": 1041,
+                "expected": 5
+            },
+            {
+                "input": 561892,
+                "expected": 3
+            },
+            {
+                "input": 1376796946,
+                "expected": 5
+            }
+        ]
+    }
 ]
 
 function range(size, startAt) {
