@@ -1,4 +1,4 @@
-function solution(N) {
+function solution1(N) {
     let i = 0;
     if (N > 0) {
         while (i < N) {
@@ -10,6 +10,37 @@ function solution(N) {
             }
 
             i++;
+        }
+    }
+
+    if (N == 0) {
+        return 0;
+    }
+
+
+
+    return -1;
+}
+
+function solution(N) {
+    let i = 0;
+    let invalid = new Set();
+    if (N > 0) {
+        while (i < N) {
+            const random = Math.floor(Math.random() * N);
+            if (!invalid.has(random)) {
+                const a = random;
+                const b = N - a;
+
+                if (isSparse(a) && isSparse(b)) {
+                    i = N;
+                    return b;
+                }
+
+                invalid.add(random)
+
+                i++;
+            }
         }
     }
 

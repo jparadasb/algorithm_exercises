@@ -70,6 +70,10 @@ const config = [
             {
                 "input": 216188401,
                 "expected": 178431313
+            },
+            {
+                "input": 536870912,
+                "expected": 0
             }
         ]
     }
