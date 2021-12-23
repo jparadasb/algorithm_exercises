@@ -46,6 +46,32 @@ const config = [
                 "expected": 5
             }
         ]
+    },
+    {
+        "name": "SparseBinaryDecomposition",
+        "func": require("../exercises/sparseBinaryDecomposition.js"),
+        "cases": [
+            {
+                "input": 26,
+                "expected": [8, 9, 17, 18, 5, 10, 16, 21]
+            },
+            {
+                "input": 1166,
+                "expected": 1162
+            },
+            {
+                "input": 0,
+                "expected": 0
+            },
+            {
+                "input": 74901729,
+                "expected": 72657057
+            },
+            {
+                "input": 216188401,
+                "expected": 178431313
+            }
+        ]
     }
 ]
 
