@@ -4,7 +4,7 @@ This repo is for studying purposes. I developed this small system to practice an
 
 # Getting started
 
-`git clone `
+`git clone git@github.com:jparadasb/algorithm_exercises.git`
 
 `npm install`
 
