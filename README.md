@@ -51,7 +51,7 @@ config.forEach((problem) => {
 
 # Utils
 
-# performace.logger.js
+## performace.logger.js
 [utils/performace.logger.js](utils/performace.logger.js)
 
 This logger allows for tracking how much time the execution took.
