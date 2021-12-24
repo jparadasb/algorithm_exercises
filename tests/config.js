@@ -57,7 +57,7 @@ const config = [
             },
             {
                 "input": 1166,
-                "expected": 1162
+                "expected": getSparses(1166)
             },
             {
                 "input": 0,
@@ -65,15 +65,19 @@ const config = [
             },
             {
                 "input": 74901729,
-                "expected": 72657057
+                "expected": getSparses(74901729)
             },
             {
                 "input": 216188401,
-                "expected": 178431313
+                "expected": getSparses(216188401)
             },
             {
                 "input": 536870912,
-                "expected": 0
+                "expected": getSparses(536870912)
+            },
+            {
+                "input": 1000000000,
+                "expected": getSparses(1000000000)
             }
         ]
     }
@@ -81,6 +85,31 @@ const config = [
 
 function range(size, startAt) {
     return [...Array(size).keys()].map(i => i + startAt);
+}
+
+function getSparses(N) {
+    let i = 1;
+    let sparses = [];
+    while (i < N) {
+        const a = i;
+        const b = N - a;
+
+        if (isSparse(a) && isSparse(b)) {
+            sparses = [a, b, ...sparses];
+        }
+
+        i++;
+    }
+
+    return sparses;
+}
+
+function isSparse(N) {
+    if ((N & (N >> 1)) > 0) {
+        return false;
+    }
+
+    return true;
 }
 
 module.exports = config;

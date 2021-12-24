@@ -22,9 +22,9 @@ function solution1(N) {
     return -1;
 }
 
-function solution(N) {
+function solution2(N) {
     let i = 0;
-    let invalid = new Set();
+    const invalid = new Set();
     if (N > 0) {
         while (i < N) {
             const random = Math.floor(Math.random() * N);
@@ -53,7 +53,55 @@ function solution(N) {
     return -1;
 }
 
+function solution(N) {
+    let i = 0;
+    let invalid = new Set();
+    if (N > 0) {
+        while (i < N) {
+            if (N % 2 == 0 && !invalid.has(N / 2)) {
+                if (isSparse(N / 2)) {
+                    i = N;
+                    return N / 2
+                } else {
+                    invalid.add(N / 2)
+                }
+            } else {
+                const random = Math.floor(Math.random() * N);
+                if (!invalid.has(random)) {
+                    const a = random;
+                    const b = N - a;
+
+                    if (isSparse(a) && isSparse(b)) {
+                        i = N;
+                        return b;
+                    }
+
+                    invalid.add(random)
+
+                    i++;
+                }
+            }
+        }
+    }
+
+    if (N == 0) {
+        return 0;
+    }
+
+
+
+    return -1;
+}
+
 function isSparse(N) {
+    if ((N & (N >> 1)) > 0) {
+        return false;
+    }
+
+    return true;
+}
+
+function _isSparse(N) {
     let binary = N.toString(2);
     let lastBitIsOn = null;
     let current = 0;
