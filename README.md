@@ -8,6 +8,75 @@ This repo is for studying purposes. I developed this small system to practice an
 
 `npm install`
 
+# How it works
+
+## config.js
+[tests/config.js](tests/config.js)
+
+This is composed by a config file witch have an structure to define the use cases for each problem
+
+```js
+{
+  "name": "BinaryGap" //[name of exercise, this will be shown when the unit test be running],
+  "func": require("../exercises/BinaryGap.js") //[require sentence to import the solution function],
+  "cases": [
+    {
+      "input": 1041 //[input for the solution function],
+      "expected": 5 //[return expected, this could be a single result or an array]
+    }
+  ],
+}
+```
+
+## global.test.js
+[tests/global.test.js](tests/global.test.js)
+
+The config is loaded for the global.test file using this function.
+
+```js
+const config = require("./config.js");
+
+config.forEach((problem) => {
+    problem.cases.forEach((useCase, index) => {
+        test(`${problem.name} : ${index}`, () => {
+            if (Array.isArray(useCase.expected)) {
+                return expect(useCase.expected).toContain(problem.func(useCase.input));
+            }
+
+            return expect(problem.func(useCase.input)).toBe(useCase.expected);
+        })
+    })
+})
+```
+
+# Utils
+
+# performace.logger.js
+[utils/performace.logger.js](utils/performace.logger.js)
+
+This logger allows for tracking how much time the execution took.
+
+Use example: 
+```js
+
+const PerformaceLogger = require('utils/performace.logger.js');
+
+const logger = new PerformaceLogger('Exersice 1');
+
+...
+
+// end of execution
+
+...
+
+logger.stop()
+
+// Exersice 1
+// Took 1000ms
+// Took 1s
+
+```
+
 # Unit Test
 
 `npm run test`
