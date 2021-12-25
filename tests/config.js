@@ -88,7 +88,7 @@ function range(size, startAt) {
 }
 
 function getSparses(N) {
-    let i = 1;
+    let i = 0;
     let sparses = [];
     while (i < N) {
         const a = i;

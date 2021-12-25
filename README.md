@@ -61,7 +61,7 @@ Use example:
 
 const PerformaceLogger = require('utils/performace.logger.js');
 
-const logger = new PerformaceLogger('Exersice 1');
+const logger = new PerformaceLogger('Exercise 1');
 
 ...
 
@@ -71,7 +71,7 @@ const logger = new PerformaceLogger('Exersice 1');
 
 logger.stop()
 
-// Exersice 1
+// Exercise 1
 // Took 1000ms
 // Took 1s
 

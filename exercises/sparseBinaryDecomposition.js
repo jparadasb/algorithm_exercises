@@ -1,3 +1,5 @@
+const PerformaceLogger = require("../utils/performace.logger");
+
 function solution1(N) {
     let i = 0;
     if (N > 0) {
@@ -53,7 +55,7 @@ function solution2(N) {
     return -1;
 }
 
-function solution(N) {
+function solution3(N) {
     let i = 0;
     let invalid = new Set();
     if (N > 0) {
@@ -89,6 +91,29 @@ function solution(N) {
     }
 
 
+    return -1;
+}
+
+function solution(N) {
+    let i = 0;
+    let remainder = N % 2;
+    let half = N / 2;
+
+    if (remainder == 0 && isSparse(half)) {
+        return half;
+    }
+
+    if (N > 0) {
+        while (i < N) {
+            if (isSparse(i)) {
+                const b = N - i;
+                if (isSparse(b)) {
+                    return i
+                }
+            }
+            i++;
+        }
+    }
 
     return -1;
 }
