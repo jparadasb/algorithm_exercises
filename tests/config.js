@@ -80,6 +80,24 @@ const config = [
                 "expected": getSparses(1000000000)
             }
         ]
+    },
+    {
+        "name": "maximumThreeDigit",
+        "func": require("../exercises/maximumThreeDigit.js"),
+        "cases": [
+            {
+                "inputs": [512, 10],
+                "expected": 972
+            },
+            {
+                "inputs": [191, 4],
+                "expected": 591
+            },
+            {
+                "inputs": [285, 20],
+                "expected": 999
+            }
+        ]
     }
 ]
 

@@ -7,6 +7,10 @@ config.forEach((problem) => {
                 return expect(useCase.expected).toContain(problem.func(useCase.input));
             }
 
+            if (Array.isArray(useCase.inputs)) {
+                return expect(problem.func(...useCase.inputs)).toBe(useCase.expected);
+            }
+
             return expect(problem.func(useCase.input)).toBe(useCase.expected);
         })
     })
