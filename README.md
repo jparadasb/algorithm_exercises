@@ -1,5 +1,7 @@
 # Algorithm Exercises
 
+![workflow](https://github.com/jparadasb/algorithm_exercises/actions/workflows/node.js.yml/badge.svg)
+
 This repo is for studying purposes. I developed this small system to practice and resolve algorithm exercises and efficiently test several use cases for each problem.
 
 # Getting started
