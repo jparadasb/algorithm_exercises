@@ -1,3 +1,6 @@
+/*
+Time Complexity: O(n^2)
+*/
 const findRoutes = (routes) => {
   const length = routes.length;
   const sorted = findFirstRoute(routes);

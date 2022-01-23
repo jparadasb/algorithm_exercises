@@ -7,40 +7,30 @@ const calculateWeight = (numbers) => {
   return total;
 };
 
-function orderWeight(strng) {
+/*
+Time Complexity: O(n)
+*/
+const orderWeight = (strng) => {
   const numbers = strng.split(' ');
-  const mapStruct = numbers.map((n) => {
-    const weight = calculateWeight(n);
-    return {
-      value: n,
-      weight,
-    };
-  });
+  return numbers.sort((a, b) => {
+    const weightA = calculateWeight(a);
+    const weightB = calculateWeight(b);
+    const distance = weightA - weightB;
+    if (distance !== 0) {
+      return distance;
+    }
 
-  return mapStruct.sort((a, b) => {
-    if (a.weight > b.weight) {
+    if (a > b) {
       return 1;
     }
 
-    if (a.weight < b.weight) {
-      return -1;
-    }
-
-    if (a.value > b.value) {
-      return 1;
-    }
-
-    if (a.value < b.value) {
+    if (a < b) {
       return -1;
     }
 
     return 0;
-  })
-      .map((struct) => {
-        return struct.value;
-      })
-      .join(' ');
-}
+  }).join(' ');
+};
 
 const solution = orderWeight;
 
